@@ -1,4 +1,4 @@
-# Node.js - Demo Web Application
+# Node.js - Demo Web Application [![Build Status](https://www.travis-ci.com/renanberto/nodejs-demoapp.svg?branch=master)](https://www.travis-ci.com/renanberto/nodejs-demoapp)
 
 This is a simple Node.js web app using the Express framework and EJS templates.
 
