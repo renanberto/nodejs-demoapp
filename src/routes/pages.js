@@ -86,11 +86,11 @@ router.get('/tools', function (req, res, next) {
 // Page to generate CPU load
 // =======================================================================
 router.get('/tools/load', function (_, res, next) {
+  let pow = 0
   let start = new Date().getTime()
   for (let i = 0; i < 499900000.0; i++) {
-    const pow =+ Math.pow(9000.0, 9000.0)
+    pow =+ Math.pow(9000.0, 9000.0)
   }
-
   let time = new Date().getTime() - start
 
   res.render('tools', {
