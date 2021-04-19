@@ -24,5 +24,6 @@ jobs:
       name: "Docker build and publish"
       script:
         - make registry-login && make image && make push
-      on:
-        branch: master
+      branches:
+        only:
+          - master
