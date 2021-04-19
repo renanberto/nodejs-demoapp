@@ -681,10 +681,7 @@
     draw: function(obj, time) {
       let canvas = obj.context.canvas
 
-      if (this.resizeClear) {
-        // eslint-disable-next-line no-self-assign
-        canvas.width = canvas.width
-      } else {
+      if (!this.resizeClear) {
         obj.context.clearRect(0, 0, canvas.width, canvas.height)
       }
 

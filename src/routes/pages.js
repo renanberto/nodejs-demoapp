@@ -85,17 +85,17 @@ router.get('/tools', function (req, res, next) {
 // =======================================================================
 // Page to generate CPU load
 // =======================================================================
-router.get('/tools/load', function (req, res, next) {
+router.get('/tools/load', function (_, res, next) {
   let start = new Date().getTime()
   for (let i = 0; i < 499900000.0; i++) {
-    Math.pow(9000.0, 9000.0)
+    const pow =+ Math.pow(9000.0, 9000.0)
   }
 
   let time = new Date().getTime() - start
 
   res.render('tools', {
     title: 'Node DemoApp: Tools',
-    message: `I did some really hard sums and it only took me ${time} milliseconds!`,
+    message: `I did some really hard sums and it only took me ${time} milliseconds!, and it's pow number ${pow}`,
   })
 })
 
