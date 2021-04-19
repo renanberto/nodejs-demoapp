@@ -1,7 +1,9 @@
 # Used by `image`, `push` & `deploy` targets, override as required
-IMAGE_REG ?= ghcr.io
-IMAGE_REPO ?= benc-uk/nodejs-demoapp
+IMAGE_REG ?= renanberto
+IMAGE_REPO ?= nodejs-demoapp-kk
 IMAGE_TAG ?= latest
+DOCKER_USER ?= ${dockerUser}
+DOCKER_PASSWORD ?= ${dockerPassword}
 
 # Used by `deploy` target, sets Azure webap defaults, override as required
 AZURE_RES_GROUP ?= temp-demoapps
@@ -29,6 +31,9 @@ lint-fix: $(SRC_DIR)/node_modules  ## 📜 Lint & format, will try to fix errors
 image:  ## 🔨 Build container image from Dockerfile 
 	docker build . --file build/Dockerfile \
 	--tag $(IMAGE_REG)/$(IMAGE_REPO):$(IMAGE_TAG)
+
+registry-login:  ## 📤 Push container image to registry 
+	docker login --username=${DOCKER_USER} --password=${DOCKER_PASSWORD}
 
 push:  ## 📤 Push container image to registry 
 	docker push $(IMAGE_REG)/$(IMAGE_REPO):$(IMAGE_TAG)
