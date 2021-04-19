@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 10
+
+addons:
+  sonarcloud:
+    organization: "renanberto"
+    token: ${sonarqubeToken}
+
+cache:
+  directories:
+    - src/node_modules
+
+jobs:
+  include:
+    - name: "Lint"
+      script: make lint
+    - name: "Unit"
+      script: make test
+    - name: "Sonar scanner"
+      script: sonar-scanner
+
+    - stage: build & publish
+      name: "Docker build and publish"
+      script:
+        - make registry-login && make image && make push
+      on:
+        branch: master
